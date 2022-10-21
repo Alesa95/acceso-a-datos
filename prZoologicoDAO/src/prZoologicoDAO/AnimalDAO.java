@@ -11,6 +11,33 @@ public abstract class AnimalDAO {
 
 	private static Connection connection;
 	
+	//	Modificar un animal
+	public static void updateAnimal (Animal animal) {
+		connection = openConnection();
+		
+		int id = animal.getId();
+		String nombre = animal.getNombre();
+		String habitat = animal.getHabitat();
+		double peso_aproximado = animal.getPeso_aproximado();
+		
+		String query = "update animales set nombre = ?, habitat = ?, "
+				+ "peso_aproximado = ? where id = ?";
+		
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, nombre);
+			ps.setString(2, habitat);
+			ps.setDouble(3, peso_aproximado);
+			ps.setInt(4, id);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		closeConnection();
+	}
+	
 	//	Buscar todos los animales
 	public static ArrayList<Animal> findAllAnimales() {
 		connection = openConnection();
