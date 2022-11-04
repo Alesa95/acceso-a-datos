@@ -14,12 +14,13 @@ public class Main {
 		//serieDao.insertar(serie);
 		//System.out.println(serieDao.buscarPorId(1)); 
 		Serie serie = serieDao.buscarPorId(1);
-		Temporada t1 = new Temporada(1, "Temporada 1", serie);
-		Temporada t2 = new Temporada(2, "Temporada 2", serie);
+		System.out.println(serie); 
+		//Temporada t1 = new Temporada(1, "Temporada 1", serie);
+		//Temporada t2 = new Temporada(2, "Temporada 2", serie);
 		
-		TemporadaDao temporadaDao = new TemporadaDao();
-		temporadaDao.insertar(t1);
-		temporadaDao.insertar(t2); 
+		//TemporadaDao temporadaDao = new TemporadaDao();
+		//temporadaDao.insertar(t1);
+		//temporadaDao.insertar(t2); 
 	}
 
 }

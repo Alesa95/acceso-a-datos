@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import pojo.Serie;
 import util.DatabaseConnection;
 
-public class SerieDao implements Dao<Serie> {
+public class SerieDao extends ObjetoDao implements InterfazDao<Serie> {
 	
 	private static Connection connection;
 	
@@ -90,19 +90,4 @@ public class SerieDao implements Dao<Serie> {
 		
 	}
 	
-	private static Connection openConnection() {
-		DatabaseConnection dbConnection = new DatabaseConnection();
-		connection = dbConnection.getConnection();
-		return connection;
-	}
-	
-	private static void closeConnection() {
-		try {
-			connection.close();
-			connection = null;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 }
