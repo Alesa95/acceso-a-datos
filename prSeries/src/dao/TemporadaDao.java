@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import pojo.Temporada;
 import util.DatabaseConnection;
 
-public class TemporadaDao implements InterfazDao<Temporada> {
+public class TemporadaDao extends ObjetoDao implements InterfazDao<Temporada> {
 	
 	private static Connection connection;
 	
@@ -62,20 +62,4 @@ public class TemporadaDao implements InterfazDao<Temporada> {
 		
 	}
 	
-	private static Connection openConnection() {
-		DatabaseConnection dbConnection = new DatabaseConnection();
-		connection = dbConnection.getConnection();
-		return connection;
-	}
-	
-	private static void closeConnection() {
-		try {
-			connection.close();
-			connection = null;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
 }

@@ -28,14 +28,22 @@ public class Main {
 		//serieDao.insertar(s); 
 		
 		Serie los_simpsons = serieDao.buscarPorId(1);
-		los_simpsons.setPlataforma("Netflix"); 
-		serieDao.modificar(los_simpsons); 
+		//los_simpsons.setPlataforma("Netflix"); 
+		//serieDao.modificar(los_simpsons); 
 		
-		ArrayList<Serie> series = serieDao.buscarTodos();
+		//ArrayList<Temporada> temporadas = serieDao.obtenerTemporadas(los_simpsons);
+		
+		ArrayList<Temporada> temporadas = los_simpsons.getTemporadas();
+		
+		for (Temporada temporada : temporadas) {
+			System.out.println(temporada); 
+		}
+		
+		/*ArrayList<Serie> series = serieDao.buscarTodos();
 		
 		for (Serie serie : series) {
 			System.out.println(serie); 
-		}
+		}*/
 	}
 
 }

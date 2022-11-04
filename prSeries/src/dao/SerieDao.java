@@ -72,6 +72,7 @@ public class SerieDao extends ObjetoDao implements InterfazDao<Serie> {
 						rs.getString("plataforma"),
 						null
 				);
+				serie.setTemporadas(obtenerTemporadas(serie));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -158,15 +159,20 @@ public class SerieDao extends ObjetoDao implements InterfazDao<Serie> {
 			e.printStackTrace();
 		}
 		
-		closeConnection();
+		//closeConnection();
 		
 		return temporadas;
 	}
-
+		
 	@Override
 	public void borrar(Serie t) {
 		// TODO Auto-generated method stub
 		
+		/*
+		 * Habrá que usar TemporadaDao.borrar
+		 * y SerieDao.obtenerTemporadas
+		 * y después de todo se borra la serie
+		 */
 	}
 	
 }
