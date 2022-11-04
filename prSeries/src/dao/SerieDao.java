@@ -20,7 +20,33 @@ public class SerieDao extends ObjetoDao implements InterfazDao<Serie> {
 	@Override
 	public ArrayList<Serie> buscarTodos() {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Serie> series = new ArrayList<>();
+		
+		connection = openConnection();
+		
+		String query = "SELECT * FROM series";
+		
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Serie serie = new Serie(
+							rs.getInt("id"),
+							rs.getString("titulo"),
+							rs.getInt("edad"),
+							rs.getString("plataforma"),
+							null
+						);
+				series.add(serie);
+						
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return series;
 	}
 
 	@Override
