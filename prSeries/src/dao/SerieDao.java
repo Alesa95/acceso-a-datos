@@ -105,9 +105,29 @@ public class SerieDao extends ObjetoDao implements InterfazDao<Serie> {
 	}
 
 	@Override
-	public void modificar(Serie t) {
-		// TODO Auto-generated method stub
+	public void modificar(Serie serie) {
+		int id = serie.getId();
+		String titulo = serie.getTitulo();
+		int edad = serie.getEdad();
+		String plataforma = serie.getPlataforma();
 		
+		connection = openConnection();
+		
+		String query = "UPDATE series SET titulo = ?, edad = ?, plataforma = ? "
+				+ " WHERE id = ?";
+		
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, titulo);
+			ps.setInt(2, edad);
+			ps.setString(3, plataforma);
+			ps.setInt(4, id);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		closeConnection();
 	}
 
 	@Override
